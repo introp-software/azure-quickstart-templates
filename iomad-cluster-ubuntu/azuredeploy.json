@@ -538,7 +538,7 @@
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat(variables('installFrontendCommand'), ' ',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('newStorageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).key1, ' ',reference(variables('publicIPAddressID'),providers('Microsoft.Network','publicIPAddresses').apiVersions[0]).dnsSettings.fqdn, ' ',reference(variables('publicDBIPAddressID'),providers('Microsoft.Network','publicIPAddresses').apiVersions[0]).dnsSettings.fqdn, ' ',parameters('fullNameOfSite'), ' ',parameters('shortNameOfSite'), ' ',parameters('iomadAdminUsername'), ' ',parameters('iomadAdminPassword'), ' ',parameters('iomadAdminEmail'))]"
+          "commandToExecute": "[concat(variables('installFrontendCommand'), ' ',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('newStorageAccountName')), variables('apiVersion')).key1, ' ',reference(variables('publicIPAddressID'), variables('apiVersion')).dnsSettings.fqdn, ' ',reference(variables('publicDBIPAddressID'), variables('apiVersion')).dnsSettings.fqdn, ' ',parameters('fullNameOfSite'), ' ',parameters('shortNameOfSite'), ' ',parameters('iomadAdminUsername'), ' ',parameters('iomadAdminPassword'), ' ',parameters('iomadAdminEmail'))]"
         }
       },
       "copy": {
@@ -660,7 +660,7 @@
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat(variables('installBackendCommand'), ' ',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('newStorageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).key1)]"
+          "commandToExecute": "[concat(variables('installBackendCommand'), ' ',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('newStorageAccountName')), variables('apiVersion')).key1)]"
         }
       }
     }
